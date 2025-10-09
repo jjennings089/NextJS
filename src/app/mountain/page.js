@@ -1,11 +1,11 @@
-import { stringifyCookie } from "next/dist/compiled/@edge-runtime/cookies";
-
 async function getData() {
-  const res = await fetch("https://snowtooth-api-rest.fly.dev");
+  const res = await fetch(
+    "https://snowtooth-api-rest.fly.dev"
+  );
   return res.json();
 }
 
-export default async function page() {
+export default async function Page() {
   const data = await getData();
   return (
     <main>
@@ -26,7 +26,6 @@ export default async function page() {
           ))}
         </tbody>
       </table>
-      {/* <div>{JSON.stringify(data)}</div> */}
     </main>
   );
 }
