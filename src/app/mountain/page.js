@@ -1,8 +1,17 @@
+import { promises as fs } from 'fs';
+import path from 'path';
+
 async function getData() {
-  const res = await fetch(
-    "https://snowtooth-api-rest.fly.dev"
-  );
-  return res.json();
+
+  const filePath = path.join(process.cwd(), './public/data/mountain.json');
+  const res = await fs.readFile(filePath, 'utf8');
+  return JSON.parse(res);
+
+  /**************************************** */
+  // Changed link call to file load
+
+  //const res = await fetch("https://snowtooth-api-rest.fly.dev");
+  //return res.json();
 }
 
 export default async function Page() {
